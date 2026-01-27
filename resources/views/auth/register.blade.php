@@ -1,4 +1,3 @@
-
 <x-guest-layout>
     <div class="min-h-screen flex items-center justify-center px-4">
 
@@ -16,70 +15,69 @@
             </div>
 
             <!-- Form -->
-            <form class="space-y-5">
+            <form method="POST" action="{{ route('register') }}" class="space-y-5">
+                @csrf
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700">
-                        Name
-                    </label>
-                    <input
+                    <x-input-label for="name" value="Name" />
+                    <x-text-input
+                        id="name"
                         type="text"
-                        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-800"
-                        placeholder="Your name"
-                    >
+                        name="name"
+                        :value="old('name')"
+                        required
+                        autofocus
+                        placeholder="Your name" />
+                    <x-input-error :messages="$errors->get('name')"/>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700">
-                        Email
-                    </label>
-                    <input
+                    <x-input-label for='email' value="Email" />
+                    <x-text-input
+                        id="email"
                         type="email"
-                        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-800"
-                        placeholder="you@example.com"
-                    >
+                        name="email"
+                        :value="old('email')"
+                        required
+                        placeholder="you@example.com" />
+
+                    <x-input-error :messages="$errors->get('email')"/>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700">
-                        Password
-                    </label>
-                    <input
+                    <x-input-label for='password' value="Password" />
+                    <x-text-input
+                        id="password"
                         type="password"
-                        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-800"
-                        placeholder="••••••••"
-                    >
+                        name="password"
+                        required
+                        placeholder="••••••••" />
+
+                    <x-input-error :messages="$errors->get('password')"/>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700">
-                        Confirm Password
-                    </label>
-                    <input
+                    <x-input-label for='password_confirmation' value="Confirm Password" />
+                    <x-text-input
+                        id="password_confirmation"
                         type="password"
-                        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-800"
-                        placeholder="••••••••"
-                    >
+                        name="password_confirmation"
+                        required
+                        placeholder="••••••••" />
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full rounded-lg bg-slate-800 py-2.5 text-white font-medium hover:bg-slate-900 transition"
-                >
+                <x-primary-button>
                     Create account
-                </button>
+                </x-primary-button>
             </form>
 
             <p class="mt-6 text-center text-sm text-slate-500">
                 Already have an account?
-                <a href="#" class="text-slate-800 font-medium hover:underline">
+                <a href="{{ route('login') }}" class="text-slate-800 font-medium hover:underline">
                     Log in
                 </a>
             </p>
 
         </div>
     </div>
-    </x-guest-layout>
-
-
-
+</x-guest-layout>
