@@ -16,52 +16,52 @@
             </div>
 
             <!-- Form -->
-            <form class="space-y-5">
+            <form method="POST" action="{{ route('login') }}" class="space-y-5">
+                @csrf
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700">
-                        Email
-                    </label>
-                    <input
+                    <x-input-label for="email" value='Email' />
+                    <x-text-input
+                        id="email"
+                        name="email"
                         type="email"
-                        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-800"
-                        placeholder="you@example.com"
-                    >
+                        :value="old('email')"
+                        required
+                        autofocus
+                        placeholder="you@example.com" />
+                    <x-input-error :messages="$errors->get('email')" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700">
-                        Password
-                    </label>
-                    <input
+                    <x-input-label for="password" value='Password' />
+                    <x-text-input
+                        id="password"
                         type="password"
-                        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-800"
-                        placeholder="••••••••"
-                    >
+                        name="password"
+                        required
+                        placeholder="••••••••" />
+                    <x-input-error :messages="$errors->get('password')" />
                 </div>
 
                 <div class="flex items-center justify-between text-sm">
                     <label class="flex items-center gap-2 text-slate-600">
-                        <input type="checkbox" class="rounded border-slate-300">
+                        <input type="checkbox" name="remember" class="rounded border-slate-300">
                         Remember me
                     </label>
 
-                    <a href="#" class="text-slate-800 hover:underline">
+                    <a href="{{ route('password.request') }}" class="text-slate-800 hover:underline">
                         Forgot password?
                     </a>
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full rounded-lg bg-slate-800 py-2.5 text-white font-medium hover:bg-slate-900 transition"
-                >
+                <x-primary-button>
                     Log in
-                </button>
+                </x-primary-button>
             </form>
 
             <p class="mt-6 text-center text-sm text-slate-500">
                 Don't have an account?
-                <a href="#" class="text-slate-800 font-medium hover:underline">
+                <a href="{{ route('register') }}" class="text-slate-800 font-medium hover:underline">
                     Create one
                 </a>
             </p>
