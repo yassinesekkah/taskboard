@@ -13,8 +13,8 @@ class TaskController extends Controller
             ->orderBy('deadline')
             ->paginate(10);
         
-         dd($tasks);
+        //  dd($tasks);
 
-        return view('tasks.index', compact('tasks'));
+        return view('tasks.board', compact('tasks'));
     }
 }
