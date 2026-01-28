@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,34 +19,49 @@
 
 <body class="bg-gray-100 font-sans antialiased">
 
-<div class="flex min-h-screen bg-gray-100">
+    <div x-data="{ sidebarOpen: false }" class="flex min-h-screen bg-gray-100">
 
-    {{-- Sidebar --}}
-   <aside
-    class="
-        hidden md:block
+
+        <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/40 z-30 md:hidden"
+            @click="sidebarOpen = false"></div>
+
+        <!-- Sidebar -->
+        <aside
+            class="
+        fixed md:static
+        inset-y-0 left-0
+        z-40
+        w-72
         md:w-64
         lg:w-72
         bg-white
         border-r
         flex-shrink-0
+        transform
+        transition-transform
+        duration-300
+        -translate-x-full
+        md:translate-x-0
     "
->
-    <x-sidebar />
-</aside>
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+            <x-sidebar />
+        </aside>
 
 
-    {{-- Main --}}
-    <div class="flex-1 flex flex-col">
-        <x-navbar />
 
-        <main class="flex-1 p-8 overflow-x-auto">
-            {{ $slot }}
-        </main>
+
+
+        {{-- Main --}}
+        <div class="flex-1 flex flex-col">
+            <x-navbar />
+
+            <main class="flex-1 p-8 overflow-x-auto">
+                {{ $slot }}
+            </main>
+        </div>
+
     </div>
 
-</div>
-
 </body>
-</html>
 
+</html>

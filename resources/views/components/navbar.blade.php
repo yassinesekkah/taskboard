@@ -1,6 +1,10 @@
 <header class="bg-white border-b px-6 py-4 flex items-center justify-between">
-    <div></div>
-    <button class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+    
+    <!-- Mobile sidebar button -->
+    <button
+        class="md:hidden p-2 rounded-lg hover:bg-gray-100"
+        @click="sidebarOpen = true"
+    >
         ☰
     </button>
     <h1 class="text-xl font-semibold text-gray-900">
