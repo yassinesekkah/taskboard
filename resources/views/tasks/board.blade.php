@@ -4,46 +4,52 @@
 
     <!-- TODO -->
     <div>
-        <h3 class="text-sm font-semibold text-gray-500 mb-4">
-            TODO
-        </h3>
+        <h3 class="text-sm font-semibold text-gray-500 mb-4">TODO</h3>
 
         <div class="space-y-4">
-            <x-task-card
-                title="Design landing page"
-                desc="Create hero section and layout"
-                date="12 Sep"
-                color="blue"
-            />
+            @forelse ($tasks['todo'] as $task)
+                <x-task-card :task="$task" color="blue" />
+            @empty
+                <p class="text-sm text-gray-400">No tasks</p>
+            @endforelse
+        </div>
+
+        <div class="mt-4">
+            {{ $tasks['todo']->links() }}
         </div>
     </div>
 
     <!-- DOING -->
     <div>
-        <h3 class="text-sm font-semibold text-gray-500 mb-4">
-            DOING
-        </h3>
+        <h3 class="text-sm font-semibold text-gray-500 mb-4">DOING</h3>
 
         <div class="space-y-4">
-            <x-task-card
-                title="Laravel Auth"
-                desc="Breeze setup & customization"
-                color="yellow"
-            />
+            @forelse ($tasks['doing'] as $task)
+                <x-task-card :task="$task" color="yellow" />
+            @empty
+                <p class="text-sm text-gray-400">No tasks</p>
+            @endforelse
+        </div>
+
+        <div class="mt-4">
+            {{ $tasks['doing']->links() }}
         </div>
     </div>
 
     <!-- DONE -->
     <div>
-        <h3 class="text-sm font-semibold text-gray-500 mb-4">
-            DONE
-        </h3>
+        <h3 class="text-sm font-semibold text-gray-500 mb-4">DONE</h3>
 
         <div class="space-y-4">
-            <x-task-card
-                title="Database schema"
-                color="green"
-            />
+            @forelse ($tasks['done'] as $task)
+                <x-task-card :task="$task" color="green" />
+            @empty
+                <p class="text-sm text-gray-400">No tasks</p>
+            @endforelse
+        </div>
+
+        <div class="mt-4">
+            {{ $tasks['done']->links() }}
         </div>
     </div>
 
