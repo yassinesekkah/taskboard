@@ -15,7 +15,7 @@
         </div>
 
         <div class="mt-4">
-            {{ $tasks['todo']->links() }}
+            {{ $tasks['todo']->links('components.pagination-minimal') }}
         </div>
     </div>
 
