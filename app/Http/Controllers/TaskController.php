@@ -93,4 +93,32 @@ class TaskController extends Controller
                 ->with("error", 'Failed to update task');
         }
     }
+
+    public function updateStatus(Request $request, Task $task)
+    {
+        if ($task->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'status' => 'required|in:todo,in_progress,done',
+        ]);
+
+        $task->update([
+            'status' => $validated['status'],
+        ]);
+
+        return back()->with('success', 'status updated successfully');
+    }
+
+    public function destroy(Task $task)
+    {
+        if ($task->user_id !== auth()->id()){
+            abort(403);
+        }
+
+        $task->delete();
+
+        return back()->with('success', 'Task deleted successfully');
+    }
 }

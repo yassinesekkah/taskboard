@@ -34,3 +34,8 @@ Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.e
 Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update')
     ->middleware('auth');
 
+Route::put('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus')
+    ->middleware('auth');
+
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy')
+    ->middleware('auth');
