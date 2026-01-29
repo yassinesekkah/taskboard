@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'TaskBoard') }}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,7 +18,11 @@
 
 <body class="bg-gray-100 font-sans antialiased">
 
-    <div x-data="{ sidebarOpen: false, openCreate: false }" class="flex min-h-screen bg-gray-100">
+    <div x-data="{
+        sidebarOpen: false,
+        openCreate: {{ $errors->any() ? 'true' : 'false' }} }"
+        class="flex min-h-screen bg-gray-100">
+
 
 
         <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/40 z-30 md:hidden"
