@@ -26,3 +26,11 @@ Route::get('/tasks', [TaskController::class, 'index'])->name('tasks')
 
 Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store')
     ->middleware('auth');
+
+
+Route::get('/tasks{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit')
+    ->middleware('auth');
+
+Route::put('/tasks{task}', [TaskController::class, 'update'])->name('tasks.update')
+    ->middleware('auth');
+

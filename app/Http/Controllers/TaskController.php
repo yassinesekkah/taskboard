@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Symfony\Component\HttpFoundation\Request;
 
 class TaskController extends Controller
@@ -57,6 +58,11 @@ class TaskController extends Controller
             return back()
                 ->with("error", 'Failed to create task');
         }
+    }
+
+    public function edit(Task $task)
+    {
+        return view('tasks.edit', compact('task'));
     }
 }
 

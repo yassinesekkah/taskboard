@@ -27,7 +27,7 @@
                     <a href="{{ $paginator->url($page) }}"
                         class="block px-4 py-2 text-sm
                             {{ $page == $paginator->currentPage() ? 'bg-slate-100 font-semibold' : 'hover:bg-gray-100' }}">
-                        P {{ $page }}
+                        P{{ $page }}
                     </a>
                 @endfor
             </div>
