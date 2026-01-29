@@ -8,13 +8,13 @@ $colors = [
 ];
 @endphp
 
-<div class="bg-white rounded-xl shadow p-4 border-l-4 {{ $colors[$color] ?? '' }}">
+<div class="bg-white rounded-xl shadow p-4 {{ $colors[$color] ?? '' }}">
     <h4 class="font-semibold text-slate-800">
         {{ $task->title }}
     </h4>
 
     @if($task->description)
-        <p class="text-sm text-gray-500 mt-1">
+        <p class="text-sm text-gray-500 mt-1">    
             {{ $task->description }}
         </p>
     @endif

@@ -22,4 +22,7 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks')
-    ->middleware('auth');;
+    ->middleware('auth');
+
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store')
+    ->middleware('auth');

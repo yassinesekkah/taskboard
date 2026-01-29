@@ -1,4 +1,15 @@
 <x-app-layout>
+@if (session('success'))
+    <div class="mb-4 px-4 py-3 bg-green-100 text-green-700 rounded-lg">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="mb-4 px-4 py-3 bg-red-100 text-red-700 rounded-lg">
+        {{ session('error') }}
+    </div>
+@endif
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -54,5 +65,15 @@
     </div>
 
 </div>
+
+@if ($errors->any())
+    <div class="mb-4 px-4 py-3 bg-red-100 text-red-700 rounded-lg">
+        <ul class="list-disc list-inside text-sm">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 </x-app-layout>
