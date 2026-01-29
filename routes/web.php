@@ -36,3 +36,6 @@ Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.upda
 
 Route::put('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus')
     ->middleware('auth');
+
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy')
+    ->middleware('auth');

@@ -110,4 +110,15 @@ class TaskController extends Controller
 
         return back()->with('success', 'status updated successfully');
     }
+
+    public function destroy(Task $task)
+    {
+        if ($task->user_id !== auth()->id()){
+            abort(403);
+        }
+
+        $task->delete();
+
+        return back()->with('success', 'Task deleted successfully');
+    }
 }
