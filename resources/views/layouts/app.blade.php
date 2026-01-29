@@ -54,8 +54,11 @@
             <main class="flex-1 p-8 overflow-x-auto">
                 {{ $slot }}
             </main>
-        </div>
 
+            {{-- Toast --}}
+            <x-toast />
+        </div>
+        {{-- Modal --}}
         <x-create-task-modal />
 
     </div>

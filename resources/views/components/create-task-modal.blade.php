@@ -33,7 +33,6 @@
                     type="text"
                     name="title"
                     class="w-full mt-1 px-4 py-2 border rounded-lg"
-                    required
                 >
             </div>
 
