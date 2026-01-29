@@ -21,7 +21,7 @@
 
     <!-- DOING -->
     <div>
-        <h3 class="text-sm font-semibold text-gray-500 mb-4">DOING</h3>
+        <h3 class="text-sm font-semibold text-gray-500 mb-4">IN PROGRESS</h3>
 
         <div class="space-y-4">
             @forelse ($tasks['doing'] as $task)
