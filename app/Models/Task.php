@@ -34,12 +34,20 @@ class Task extends Model
 
     ///scope dyal search
     public function scopeSearch($query, $search)
-    {   
-        return $query->when($search, function($query, $search){
-                    $query->where(function ($q) use ($search){
-                        $q->where('title', 'like', "%{$search}%")
-                          ->orWhere('description', 'like', "%{$search}%");
-                    });
-                });
+    {
+        return $query->when($search, function ($query, $search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        });
+    }
+
+    ///scope dyal filter priority
+    public function scopePriority($query, $priority)
+    {
+        return $query->when($priority, function ($query, $priority) {
+            $query->where('priority', $priority);
+        });
     }
 }

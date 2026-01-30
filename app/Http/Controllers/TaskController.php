@@ -133,9 +133,12 @@ class TaskController extends Controller
     public function indexBacklog(Request $request)
     {   
         $search = $request->search;
+        $priority = $request->priority;
+
         $tasks = auth()->user()
                         ->tasks()
                         ->search($search)
+                        ->priority($priority)
                         ->orderBy('created_at', 'desc')
                         ->paginate(10);
 

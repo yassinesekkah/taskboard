@@ -24,12 +24,12 @@
 
             {{-- Priority filter --}}
             <div>
-                <select name="priority"
+                <select name="priority"  id="prioritySelect"
                     class="rounded-md border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500">
                     <option value="">Toutes les priorités</option>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="low" {{ request('priority') === 'low' ? 'selected' : ''}}>Low</option>
+                    <option value="medium" {{ request('priority') === 'medium' ? 'selected' : ''}}>Medium</option>
+                    <option value="high" {{ request('priority') === 'high' ? 'selected' : ''}}>High</option>
                 </select>
             </div>
 
