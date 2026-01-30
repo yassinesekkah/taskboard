@@ -13,12 +13,12 @@
 
             {{-- Status filter --}}
             <div>
-                <select name="status"
+                <select name="status" id="statusSelect"
                     class="rounded-md border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500">
                     <option value="">Tous les statuts</option>
-                    <option value="todo">Todo</option>
-                    <option value="in_progress">In Progress</option>
-                    <option value="done">Done</option>
+                    <option value="todo" {{ request('status') === 'todo' ? 'selected' : '' }}>Todo</option>
+                    <option value="in_progress" {{ request('status') === 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                    <option value="done" {{ request('status') === 'done' ? 'selected' : '' }}>Done</option>
                 </select>
             </div>
 
