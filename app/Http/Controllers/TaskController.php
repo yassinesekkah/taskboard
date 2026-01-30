@@ -134,11 +134,13 @@ class TaskController extends Controller
     {   
         $search = $request->search;
         $priority = $request->priority;
+        $status = $request->status;
 
         $tasks = auth()->user()
                         ->tasks()
                         ->search($search)
                         ->priority($priority)
+                        ->status($status)
                         ->orderBy('created_at', 'desc')
                         ->paginate(10);
 

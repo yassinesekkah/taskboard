@@ -50,4 +50,11 @@ class Task extends Model
             $query->where('priority', $priority);
         });
     }
+
+    public function scopeStatus($query, $status)
+    {
+        return $query->when($status, function ($query, $status) {
+            $query->where('status', $status);
+        });
+    }
 }
