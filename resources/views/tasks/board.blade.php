@@ -32,7 +32,7 @@
         </div>
 
         <div class="mt-4">
-            {{ $tasks['doing']->links() }}
+            {{ $tasks['doing']->links('components.pagination-minimal') }}
         </div>
     </div>
 
@@ -49,7 +49,7 @@
         </div>
 
         <div class="mt-4">
-            {{ $tasks['done']->links() }}
+            {{ $tasks['done']->links('components.pagination-minimal') }}
         </div>
     </div>
 
