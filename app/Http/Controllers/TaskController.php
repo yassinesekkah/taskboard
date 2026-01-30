@@ -7,23 +7,31 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
+         ///search
+        $search = $request->query('search');
 
         $tasks = [
             'todo' => $user->tasks()
                 ->where('status', 'todo')
+                ///search
+                ->search($search)
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'todo'),
 
             'doing' => $user->tasks()
                 ->where('status', 'in_progress')
+                ///search
+                ->search($search)
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'doing'),
 
             'done' => $user->tasks()
                 ->where('status', 'done')
+                ///search
+                ->search($search)
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'done'),
         ];
@@ -120,5 +128,22 @@ class TaskController extends Controller
         $task->delete();
 
         return back()->with('success', 'Task deleted successfully');
+    }
+
+    public function indexBacklog(Request $request)
+    {   
+        $search = $request->search;
+        $priority = $request->priority;
+        $status = $request->status;
+
+        $tasks = auth()->user()
+                        ->tasks()
+                        ->search($search)
+                        ->priority($priority)
+                        ->status($status)
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(10);
+
+        return view('tasks.backlog', compact('tasks'));
     }
 }
