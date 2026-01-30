@@ -1,7 +1,7 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
-import './search';
+import './backlog-search';
 
 window.Alpine = Alpine;
 

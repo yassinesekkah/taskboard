@@ -39,3 +39,6 @@ Route::put('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->nam
 
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy')
     ->middleware('auth');
+
+Route::get('/backlog', [TaskController::class, 'indexBacklog'])->name('backlog.index')
+    ->middleware('auth');

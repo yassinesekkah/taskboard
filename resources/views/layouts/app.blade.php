@@ -30,13 +30,14 @@
 
         <!-- Sidebar -->
         <aside
-            class="
-                    fixed md:static
+            class=" 
+                    fixed 
+                    h-screen
                     inset-y-0 left-0
                     z-40
-                    w-72
-                    md:w-64
-                    lg:w-72
+                    w-64
+                    md:w-52
+                    lg:w-64
                     bg-white
                     border-r
                     flex-shrink-0
@@ -51,7 +52,7 @@
         </aside>
 
         {{-- Main --}}
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col ml-72 md:ml-64">
             <x-navbar />
 
             <main class="flex-1 p-8 overflow-x-auto">

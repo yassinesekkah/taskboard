@@ -129,4 +129,16 @@ class TaskController extends Controller
 
         return back()->with('success', 'Task deleted successfully');
     }
+
+    public function indexBacklog(Request $request)
+    {   
+        $search = $request->search;
+        $tasks = auth()->user()
+                        ->tasks()
+                        ->search($search)
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(10);
+
+        return view('tasks.backlog', compact('tasks'));
+    }
 }
