@@ -7,23 +7,46 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
+         ///search
+        $search = $request->query('search');
 
         $tasks = [
             'todo' => $user->tasks()
                 ->where('status', 'todo')
+                ///search
+                ->when($search, function($query, $search){
+                    $query->where(function ($q) use ($search){
+                        $q->where('title', 'like', "%{$search}%")
+                          ->orWhere('description', 'like', "%{$search}%")  ;
+                    });
+                })
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'todo'),
 
             'doing' => $user->tasks()
                 ->where('status', 'in_progress')
+                ///search
+                ->when($search, function($query, $search){
+                    $query->where(function ($q) use ($search){
+                        $q->where('title', 'like', "%{$search}%")
+                          ->orWhere('description', 'like', "%{$search}%")  ;
+                    });
+                })
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'doing'),
 
             'done' => $user->tasks()
                 ->where('status', 'done')
+                ///search
+                ->when($search, function($query, $search){
+                    $query->where(function ($q) use ($search){
+                        $q->where('title', 'like', "%{$search}%")
+                          ->orWhere('description', 'like', "%{$search}%")  ;
+                    });
+                })
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'done'),
         ];
