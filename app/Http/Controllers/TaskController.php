@@ -17,36 +17,21 @@ class TaskController extends Controller
             'todo' => $user->tasks()
                 ->where('status', 'todo')
                 ///search
-                ->when($search, function($query, $search){
-                    $query->where(function ($q) use ($search){
-                        $q->where('title', 'like', "%{$search}%")
-                          ->orWhere('description', 'like', "%{$search}%")  ;
-                    });
-                })
+                ->search($search)
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'todo'),
 
             'doing' => $user->tasks()
                 ->where('status', 'in_progress')
                 ///search
-                ->when($search, function($query, $search){
-                    $query->where(function ($q) use ($search){
-                        $q->where('title', 'like', "%{$search}%")
-                          ->orWhere('description', 'like', "%{$search}%")  ;
-                    });
-                })
+                ->search($search)
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'doing'),
 
             'done' => $user->tasks()
                 ->where('status', 'done')
                 ///search
-                ->when($search, function($query, $search){
-                    $query->where(function ($q) use ($search){
-                        $q->where('title', 'like', "%{$search}%")
-                          ->orWhere('description', 'like', "%{$search}%")  ;
-                    });
-                })
+                ->search($search)
                 ->orderBy('deadline')
                 ->paginate(5, ['*'], 'done'),
         ];

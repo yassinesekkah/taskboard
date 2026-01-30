@@ -9,11 +9,12 @@
     </h1>
 
     <div class="flex items-center gap-4">
-        <form method="GET" action="{{ route('tasks')}}">
+        <form method="GET" action="{{ route('tasks')}}" id="searchForm">
             <input type="text" 
                     name="search"
                     value = "{{ request('search')}}" 
                     placeholder="Search tasks..."
+                    id="searchInput"
                     class="px-4 py-2 rounded-lg bg-gray-100 text-sm
                         focus:outline-none focus:ring-2 focus:ring-slate-800">
         </form>
