@@ -31,4 +31,15 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    ///scope dyal search
+    public function scopeSearch($query, $search)
+    {
+        return $query->when($search, function($query, $search){
+                    $query->where(function ($q) use ($search){
+                        $q->where('title', 'like', "%{$search}%")
+                          ->orWhere('description', 'like', "%{$search}%");
+                    });
+                });
+    }
 }
