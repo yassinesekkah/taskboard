@@ -72,3 +72,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    if (!window.tasksDoneLast7Days) return;
+
+    const ctx = document.getElementById('tasksDoneLineChart');
+    if (!ctx) return;
+
+    const labels = window.tasksDoneLast7Days.map(item => item.date);
+    const data = window.tasksDoneLast7Days.map(item => item.count);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Tasks completed',
+                data: data,
+                borderColor: '#10b981', // emerald-500
+                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                tension: 0.4,
+                fill: true,
+                pointRadius: 4,
+                pointBackgroundColor: '#10b981'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+
+});
+
+
+

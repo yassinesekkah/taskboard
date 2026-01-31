@@ -1,38 +1,65 @@
-<header class="bg-white border-b px-6 py-4 flex items-center justify-between">
-    <div class="flex gap-3 items-center">
-        <!-- Mobile sidebar button -->
-        <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100" @click="sidebarOpen = true">
+<header
+    class="bg-gray-50 border-b border-gray-200
+           px-6 py-4 flex items-center justify-between">
+
+    {{-- Left --}}
+    <div class="flex gap-4 items-center">
+
+        {{-- Mobile sidebar button --}}
+        <button
+            class="lg:hidden p-2 rounded-lg
+                   text-slate-300 hover:bg-slate-700 hover:text-white
+                   transition"
+            @click="sidebarOpen = true">
             ☰
         </button>
 
-        <h1 class="text-xl font-semibold text-gray-800">
+        <div>
             @if (request()->routeIs('backlog.*'))
-                Backlog
-                <p class="text-sm text-gray-500">
+                <h1 class="text-xl font-semibold text-gray-900">
+                    Backlog
+                </h1>
+                <p class="text-sm text-slate-400">
                     All tasks in one place
                 </p>
+
             @elseif (request()->routeIs('tasks'))
-                Board
-                <p class="text-sm text-gray-500">
+                <h1 class="text-xl font-semibold text-gray-900">
+                    Board
+                </h1>
+                <p class="text-sm text-slate-400">
                     Visualize task progress
                 </p>
+
             @else
-                <h1 class="text-2xl font-semibold text-gray-800">Dashboard</h1>                
+                <h1 class="text-xl font-semibold text-gray-900">
+                    Dashboard
+                </h1>
+                <p class="text-sm text-slate-400">
+                    Overview of your productivity
+                </p>
             @endif
-        </h1>
+        </div>
+
     </div>
+
+    {{-- Right --}}
     <div class="flex items-center gap-4">
 
-        <form method="GET" action="{{ route('tasks') }}" id="searchForm">
-            <input type="text" name="search" value = "{{ request('search') }}" placeholder="Search tasks..."
-                id="searchInput"
-                class="px-4 py-2 rounded-lg bg-gray-100 text-sm
-                        focus:outline-none focus:ring-2 focus:ring-slate-800">
-        </form>
-        <button @click = "openCreate = true"
-            class="bg-slate-800 text-white px-4 py-2 rounded-lg
-                   text-sm font-medium hover:bg-slate-900  focus:outline-none focus:ring-2 focus:ring-slate-800">
-            + New Task
-        </button>
+
+        {{-- New Task --}}
+  <button
+    @click="openCreate = true"
+    class="bg-emerald-600/90 text-white px-4 py-2 rounded-lg
+           text-sm font-medium
+           hover:bg-emerald-600
+           focus:outline-none focus:ring-2 focus:ring-emerald-400/60
+           transition">
+    + New Task
+</button>
+
+
+
+
     </div>
 </header>
