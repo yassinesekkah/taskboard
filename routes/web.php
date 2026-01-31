@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -8,9 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,13 +21,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')
+    ->middleware('auth');
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks')
     ->middleware('auth');
 
 Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store')
     ->middleware('auth');
-
 
 Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit')
     ->middleware('auth');

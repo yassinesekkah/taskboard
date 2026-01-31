@@ -57,4 +57,32 @@ class Task extends Model
             $query->where('status', $status);
         });
     }
+
+    public function scopeForUser($query, $user)
+    {
+        return $query->where('user_id',  $user->id);
+    }
+
+    public function scopeCompleted($query)
+    {
+        return $query->where('status', 'done');
+    }
+
+    public function scopeInProgress($query)
+    {
+        return $query->where('status', 'in_progress');
+    }
+
+    public function scopeOverdue($query)
+    {
+        return $query->where('deadline', '<', now())
+                    ->whereNot('status', 'done');
+    }
+
+    public function scopeRecent($query, $limit = 5)
+    {
+        return $query->latest()->take($limit);
+    }
+
+
 }

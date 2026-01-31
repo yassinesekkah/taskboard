@@ -14,10 +14,10 @@
             @elseif (request()->routeIs('tasks'))
                 Board
                 <p class="text-sm text-gray-500">
-                Visualize task progress
+                    Visualize task progress
                 </p>
             @else
-                Dashboard
+                <h1 class="text-2xl font-semibold text-gray-800">Dashboard</h1>                
             @endif
         </h1>
     </div>
