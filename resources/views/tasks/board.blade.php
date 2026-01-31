@@ -13,10 +13,6 @@
                 <p class="text-sm text-gray-400">No tasks</p>
             @endforelse
         </div>
-
-        <div class="mt-4">
-            {{ $tasks['todo']->links('components.pagination-minimal') }}
-        </div>
     </div>
 
     <!-- DOING -->
@@ -29,10 +25,6 @@
             @empty
                 <p class="text-sm text-gray-400">No tasks</p>
             @endforelse
-        </div>
-
-        <div class="mt-4">
-            {{ $tasks['doing']->links('components.pagination-minimal') }}
         </div>
     </div>
 
@@ -47,12 +39,6 @@
                 <p class="text-sm text-gray-400">No tasks</p>
             @endforelse
         </div>
-
-        <div class="mt-4">
-            {{ $tasks['done']->links('components.pagination-minimal') }}
-        </div>
     </div>
-
 </div>
-
 </x-app-layout>

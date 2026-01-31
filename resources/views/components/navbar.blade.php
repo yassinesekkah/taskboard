@@ -1,27 +1,28 @@
 <header class="bg-white border-b px-6 py-4 flex items-center justify-between">
+    <div class="flex gap-3 items-center">
+        <!-- Mobile sidebar button -->
+        <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100" @click="sidebarOpen = true">
+            ☰
+        </button>
 
-    <!-- Mobile sidebar button -->
-    <button class="md:hidden p-2 rounded-lg hover:bg-gray-100" @click="sidebarOpen = true">
-        ☰
-    </button>
-
-    <h1 class="text-xl font-semibold text-gray-800">
-        @if (request()->routeIs('backlog.*'))
-            Backlog
-            <p class="text-sm text-gray-500">
-                Toutes les tâches du projet
-            </p>
-        @elseif (request()->routeIs('tasks'))
-            Board
-        @else
-            Dashboard
-        @endif
-
-
-    </h1>
-
+        <h1 class="text-xl font-semibold text-gray-800">
+            @if (request()->routeIs('backlog.*'))
+                Backlog
+                <p class="text-sm text-gray-500">
+                    All tasks in one place
+                </p>
+            @elseif (request()->routeIs('tasks'))
+                Board
+                <p class="text-sm text-gray-500">
+                Visualize task progress
+                </p>
+            @else
+                Dashboard
+            @endif
+        </h1>
+    </div>
     <div class="flex items-center gap-4">
-        
+
         <form method="GET" action="{{ route('tasks') }}" id="searchForm">
             <input type="text" name="search" value = "{{ request('search') }}" placeholder="Search tasks..."
                 id="searchInput"

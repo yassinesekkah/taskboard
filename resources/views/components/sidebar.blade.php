@@ -2,7 +2,7 @@
 
     {{-- Logo --}}
     <h1 class="text-2xl font-bold text-slate-800 mb-10">
-        TaskBoard
+        <img src="{{ asset('images/logo.png') }}" alt="Taskly Logo" class="h-8">
     </h1>
 
     {{-- Navigation --}}
