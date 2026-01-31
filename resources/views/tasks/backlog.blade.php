@@ -2,14 +2,16 @@
     <div class="space-y-6">
 
         {{-- Search & Filters --}}
-        <form method="GET" id="backlogSearchForm" class="flex flex-wrap gap-4 items-center bg-white p-4 rounded-lg shadow-sm">
+        <form method="GET" id="backlogSearchForm"
+            class="flex flex-wrap gap-4 items-center bg-white p-4 rounded-lg shadow-sm">
 
             {{-- Search --}}
             <div class="flex-1">
-                <input type="text" name="search" id="backlogSearchInput" value="{{ request('search') }}" placeholder="Search in backlog..."
+                <input type="text" name="search" id="backlogSearchInput" value="{{ request('search') }}"
+                    placeholder="Search in backlog..."
                     class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
             </div>
-            
+
 
             {{-- Status filter --}}
             <div>
@@ -17,19 +19,20 @@
                     class="rounded-md border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500">
                     <option value="">Tous les statuts</option>
                     <option value="todo" {{ request('status') === 'todo' ? 'selected' : '' }}>Todo</option>
-                    <option value="in_progress" {{ request('status') === 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                    <option value="in_progress" {{ request('status') === 'in_progress' ? 'selected' : '' }}>In Progress
+                    </option>
                     <option value="done" {{ request('status') === 'done' ? 'selected' : '' }}>Done</option>
                 </select>
             </div>
 
             {{-- Priority filter --}}
             <div>
-                <select name="priority"  id="prioritySelect"
+                <select name="priority" id="prioritySelect"
                     class="rounded-md border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500">
                     <option value="">Toutes les priorités</option>
-                    <option value="low" {{ request('priority') === 'low' ? 'selected' : ''}}>Low</option>
-                    <option value="medium" {{ request('priority') === 'medium' ? 'selected' : ''}}>Medium</option>
-                    <option value="high" {{ request('priority') === 'high' ? 'selected' : ''}}>High</option>
+                    <option value="low" {{ request('priority') === 'low' ? 'selected' : '' }}>Low</option>
+                    <option value="medium" {{ request('priority') === 'medium' ? 'selected' : '' }}>Medium</option>
+                    <option value="high" {{ request('priority') === 'high' ? 'selected' : '' }}>High</option>
                 </select>
             </div>
 
@@ -93,8 +96,15 @@
                             </td>
 
                             <td class="px-6 py-4 text-right space-x-2">
-                                <a href="#" class="text-indigo-600 hover:underline text-sm">Edit</a>
-                                <a href="#" class="text-red-500 hover:underline text-sm">Delete</a>
+                                <a href="{{ route('tasks.edit', $task) }}"
+                                    class="text-indigo-600 hover:underline text-sm">Edit</a>
+                                <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500 hover:underline text-sm">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
 
                         </tr>
