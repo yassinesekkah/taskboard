@@ -4,49 +4,49 @@
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
 
-    {{-- Total Tasks --}}
-    <div
-        class="bg-slate-800 p-6 rounded-xl shadow-sm text-white
+        {{-- Total Tasks --}}
+        <div
+            class="bg-slate-800 p-6 rounded-xl shadow-sm text-white
                flex flex-col items-center justify-center text-center
                transition transform hover:-translate-y-1 hover:shadow-lg">
-        <p class="text-sm text-slate-300">Total Tasks</p>
-        <p class="text-3xl font-bold mt-2">{{ $totalTasks }}</p>
-    </div>
+            <p class="text-sm text-slate-300">Total Tasks</p>
+            <p class="text-3xl font-bold mt-2">{{ $totalTasks }}</p>
+        </div>
 
-    {{-- Completed --}}
-    <div
-        class="bg-green-600 p-6 rounded-xl shadow-sm text-white
+        {{-- Completed --}}
+        <div
+            class="bg-green-600 p-6 rounded-xl shadow-sm text-white
                flex flex-col items-center justify-center text-center
                transition transform hover:-translate-y-1 hover:shadow-lg">
-        <p class="text-sm text-green-100">Completed</p>
-        <p class="text-3xl font-bold mt-2">{{ $completedTasks }}</p>
-    </div>
+            <p class="text-sm text-green-100">Completed</p>
+            <p class="text-3xl font-bold mt-2">{{ $completedTasks }}</p>
+        </div>
 
-    {{-- In Progress --}}
-    <div
-        class="bg-blue-600 p-6 rounded-xl shadow-sm text-white
+        {{-- In Progress --}}
+        <div
+            class="bg-blue-600 p-6 rounded-xl shadow-sm text-white
                flex flex-col items-center justify-center text-center
                transition transform hover:-translate-y-1 hover:shadow-lg">
-        <p class="text-sm text-blue-100">In Progress</p>
-        <p class="text-3xl font-bold mt-2">{{ $inProgressTasks }}</p>
-    </div>
+            <p class="text-sm text-blue-100">In Progress</p>
+            <p class="text-3xl font-bold mt-2">{{ $inProgressTasks }}</p>
+        </div>
 
-    {{-- Overdue --}}
-    <div
-        class="bg-rose-600 p-6 rounded-xl shadow-sm text-white
+        {{-- Overdue --}}
+        <div
+            class="bg-rose-600 p-6 rounded-xl shadow-sm text-white
                flex flex-col items-center justify-center text-center
                transition transform hover:-translate-y-1 hover:shadow-lg">
-        <p class="text-sm text-rose-100">Overdue</p>
-        <p class="text-3xl font-bold mt-2">{{ $overdueTasks }}</p>
+            <p class="text-sm text-rose-100">Overdue</p>
+            <p class="text-3xl font-bold mt-2">{{ $overdueTasks }}</p>
+        </div>
+
     </div>
 
-</div>
 
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
 
         {{-- Tasks by Status --}}
-        <div class="bg-white p-6 rounded-xl shadow-sm">
+        <div class="bg-white p-6 rounded-xl shadow-sm mt-8">
             <h3 class="text-sm font-semibold text-gray-700 mb-4">
                 Tasks by Status
             </h3>
@@ -59,7 +59,7 @@
         </div>
 
         {{-- Tasks by Priority --}}
-        <div class="bg-white p-6 rounded-xl shadow-sm">
+        <div class="bg-white p-6 rounded-xl shadow-sm mt-8">
             <h3 class="text-sm font-semibold text-gray-700 mb-4">
                 Tasks by Priority
             </h3>
@@ -71,6 +71,22 @@
             </div>
 
         </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm mt-8">
+            <h3 class="text-sm font-semibold text-gray-700 mb-4">
+                Tasks Completed (Last 7 Days)
+            </h3>
+
+            <canvas id="tasksDoneLineChart" height="120"></canvas>
+            <script>
+                window.tasksDoneLast7Days = @json($tasksDoneLast7Days);
+            </script>
+        </div>
+
+
+
+
+
+
 
     </div>
     <div class="bg-white p-6 rounded-xl shadow-sm mt-8">

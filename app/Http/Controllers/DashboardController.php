@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
@@ -33,6 +34,22 @@ class DashboardController extends Controller
             'high' => Task::forUser($user)->where('priority', 'high')->count(),
         ];
 
+        //tasks completed last 7 days
+        $tasksDoneLast7Days = [];
+
+        for ($i = 6; $i >= 0; $i--) {
+            $date = Carbon::now()->subDays($i)->toDateString();
+
+            $tasksDoneLast7Days[] = [
+                'date' => Carbon::parse($date)->format('M d'),
+                'count' => Task::forUser($user)
+                    ->where('status', 'done')
+                    ->whereDate('updated_at', $date)
+                    ->count(),
+            ];
+        }
+
+
         return view('dashboard', compact(
             'totalTasks',
             'completedTasks',
@@ -41,6 +58,7 @@ class DashboardController extends Controller
             'recentTasks',
             'tasksByStatus',
             'tasksByPriority',
+            'tasksDoneLast7Days',
         ));
     }
 }
