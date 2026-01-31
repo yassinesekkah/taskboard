@@ -5,8 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
-    <title>{{ config('app.name', 'TaskBoard') }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>{{ config('app.name', 'Taskkly') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,39 +23,42 @@
 
     <div x-data="{
         sidebarOpen: false,
-        openCreate: {{ $errors->any() ? 'true' : 'false' }} }"
-        class="flex min-h-screen bg-gray-100">
+        openCreate: {{ $errors->any() ? 'true' : 'false' }}
+    }" class="flex min-h-screen bg-gray-100">
 
 
 
-        <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/40 z-30 md:hidden"
-            @click="sidebarOpen = false"></div>
+        <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/40 z-30 lg:hidden"
+            @click="sidebarOpen = false">
+        </div>
+
 
         <!-- Sidebar -->
         <aside
-            class=" 
-                    fixed 
-                    h-screen
-                    inset-y-0 left-0
-                    z-40
-                    w-64
-                    md:w-52
-                    lg:w-64
-                    bg-white
-                    border-r
-                    flex-shrink-0
-                    transform
-                    transition-transform
-                    duration-300
-                    -translate-x-full
-                    md:translate-x-0
-                "
+            class="
+        fixed
+        h-screen
+        inset-y-0 left-0
+        z-40
+
+        w-64
+        bg-white
+        border-r
+
+        transform
+        transition-transform
+        duration-300
+
+        -translate-x-full
+        lg:translate-x-0
+    "
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
             <x-sidebar />
         </aside>
 
+
         {{-- Main --}}
-        <div class="flex-1 flex flex-col ml-72 md:ml-64">
+        <div class="flex-1 flex flex-col ml-0 md:ml-0 lg:ml-64">
             <x-navbar />
 
             <main class="flex-1 p-8 overflow-x-auto">

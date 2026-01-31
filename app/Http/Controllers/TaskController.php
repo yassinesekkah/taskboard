@@ -19,21 +19,21 @@ class TaskController extends Controller
                 ///search
                 ->search($search)
                 ->orderBy('deadline')
-                ->paginate(5, ['*'], 'todo'),
+                ->get(),
 
             'doing' => $user->tasks()
                 ->where('status', 'in_progress')
                 ///search
                 ->search($search)
                 ->orderBy('deadline')
-                ->paginate(5, ['*'], 'doing'),
+                ->get(),
 
             'done' => $user->tasks()
                 ->where('status', 'done')
                 ///search
                 ->search($search)
                 ->orderBy('deadline')
-                ->paginate(5, ['*'], 'done'),
+                ->get(),
         ];
 
         return view('tasks.board', compact('tasks'));

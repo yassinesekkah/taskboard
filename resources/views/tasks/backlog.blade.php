@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="p-6 space-y-6">
+    <div class="space-y-6">
 
         {{-- Search & Filters --}}
         <form method="GET" id="backlogSearchForm" class="flex flex-wrap gap-4 items-center bg-white p-4 rounded-lg shadow-sm">
