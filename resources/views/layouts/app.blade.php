@@ -7,8 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <title>{{ config('app.name', 'TaskBoard') }}</title>
+    <title>{{ config('app.name', 'Taskkly') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
