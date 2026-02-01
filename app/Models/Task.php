@@ -23,6 +23,7 @@ class Task extends Model
     {
         return [
             'deadline' => 'date',
+            'user_id' => 'integer',
         ];
     }
 

@@ -1,13 +1,16 @@
 <!-- Overlay -->
 <div
+    x-cloak
     x-show="openCreate"
     x-transition.opacity
     class="fixed inset-0 bg-black/40 z-40"
-    @click="openCreate = false"
+    @click.self="openCreate = false"
+
 ></div>
 
 <!-- Modal -->
 <div
+    x-cloak
     x-show="openCreate"
     x-transition
     class="fixed inset-0 z-50 flex items-center justify-center"

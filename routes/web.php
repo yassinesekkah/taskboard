@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,7 +39,8 @@ Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.e
 Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update')
     ->middleware('auth');
 
-Route::put('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus')
+Route::post('/tasks/{task}/status', [TaskController::class, 'updateStatus'])
+    ->name('tasks.updateStatus')
     ->middleware('auth');
 
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy')
@@ -46,3 +48,8 @@ Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.
 
 Route::get('/backlog', [TaskController::class, 'indexBacklog'])->name('backlog.index')
     ->middleware('auth');
+
+Route::get('/clear', function () {
+    Artisan::call('optimize:clear');
+    return 'cleared';
+});
