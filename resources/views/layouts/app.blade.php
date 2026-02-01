@@ -23,8 +23,8 @@
 
     <div x-data="{
         sidebarOpen: false,
-        openCreate: {{ $errors->any() ? 'true' : 'false' }}
-    }" class="flex min-h-screen bg-gray-100">
+        openCreate: false
+                 }" class="flex min-h-screen bg-gray-200">
 
         <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/40 z-30 lg:hidden"
             @click="sidebarOpen = false">
@@ -48,7 +48,7 @@
 
         -translate-x-full
         lg:translate-x-0
-    "
+         "
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
             <x-sidebar />
         </aside>

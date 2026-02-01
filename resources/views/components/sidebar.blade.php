@@ -41,6 +41,7 @@
 
     {{-- User button --}}
     <button
+        type="button"
         @click="open = !open"
         class="w-full flex items-center justify-between px-4 py-3 rounded-xl
                text-slate-300 hover:bg-slate-800 transition">

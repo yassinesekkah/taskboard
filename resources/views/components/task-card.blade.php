@@ -2,9 +2,9 @@
 
 @php
     $colors = [
-        'blue' => 'border-blue-500 bg-bg-blue-50',
+        'blue' => 'border-blue-500 bg-blue-50',
         'yellow' => 'border-yellow-500 bg-yellow-50',
-        'green' => 'border-green-500 bg-green-90',
+        'green' => 'border-green-500 bg-green-50',
     ];
 @endphp
 
@@ -17,7 +17,7 @@
         <div class="relative ml-auto" x-data="{ open: false }">
 
             <!-- 3 dots button -->
-            <button @click="open = !open" class="p-1 rounded-full hover:bg-gray-100 text-gray-500">
+            <button @click="open = !open" type="button" class="p-1 rounded-full hover:bg-gray-100 text-gray-500">
                 <x-icon.threeDots />
             </button>
 
@@ -36,7 +36,7 @@
                 <form method="POST" action="{{ route('tasks.destroy', $task) }}">
                     @csrf
                     @method('DELETE')
-                    <button class="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                    <button type="submit" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
                         <!-- Trash icon -->
                         <x-icon.trash class="text-red-500" />
                         Delete
@@ -63,7 +63,6 @@
 
         <form method="POST" action="{{ route('tasks.updateStatus', $task) }}">
             @csrf
-            @method('PUT')
 
             <select name="status" onchange="this.form.submit()"
                 class="
