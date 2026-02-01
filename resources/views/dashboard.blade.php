@@ -39,9 +39,7 @@
             <p class="text-sm text-rose-100">Overdue</p>
             <p class="text-3xl font-bold mt-2">{{ $overdueTasks }}</p>
         </div>
-
     </div>
-
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
 
@@ -82,12 +80,6 @@
             </script>
         </div>
 
-
-
-
-
-
-
     </div>
     <div class="bg-white p-6 rounded-xl shadow-sm mt-8">
         <h3 class="text-sm font-semibold text-gray-700 mb-4">
@@ -105,5 +97,4 @@
             @endforelse
         </ul>
     </div>
-
 </x-app-layout>

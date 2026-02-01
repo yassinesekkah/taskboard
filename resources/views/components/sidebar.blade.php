@@ -1,8 +1,8 @@
 <div class="h-full flex flex-col px-6 py-6 bg-slate-900 text-slate-300">
 
     {{-- Logo --}}
-    <div class="flex items-center gap-3 mb-10 px-3">
-        <img src="{{ asset('images/logo.png') }}" class="h-10 w-32" alt="Taskly">
+    <div class="flex items-center gap-3 mb-10 px-6">
+        <img src="{{ asset('images/logoActra.png') }}" class="h-23 w-32" alt="Actra">
     </div>
 
     {{-- Navigation --}}

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/faviconActra.png') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -26,12 +26,9 @@
         openCreate: {{ $errors->any() ? 'true' : 'false' }}
     }" class="flex min-h-screen bg-gray-100">
 
-
-
         <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/40 z-30 lg:hidden"
             @click="sidebarOpen = false">
         </div>
-
 
         <!-- Sidebar -->
         <aside
@@ -70,9 +67,7 @@
         </div>
         {{-- Modal --}}
         <x-create-task-modal />
-
     </div>
-
 </body>
 
 </html>
