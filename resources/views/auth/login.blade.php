@@ -6,14 +6,14 @@
         <div class="w-[420px] bg-white rounded-xl shadow-md p-8">
 
             <!-- Title -->
-            <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-slate-800">
-                    TaskBoard
-                </h1>
-                <p class="text-sm text-slate-500 mt-1">
+            <div class="bg-slate-800 rounded-t-xl -m-8 mb-8 p-8 text-center">
+                <img src="{{ asset('images/logoActra.png') }}" class="mx-auto h-16 w-auto" alt="Actra">
+
+                <p class="text-sm text-slate-300 mt-2">
                     Sign in to your account
                 </p>
             </div>
+
 
             <!-- Form -->
             <form method="POST" action="{{ route('login') }}" class="space-y-5">
@@ -21,25 +21,14 @@
 
                 <div>
                     <x-input-label for="email" value='Email' />
-                    <x-text-input
-                        id="email"
-                        name="email"
-                        type="email"
-                        :value="old('email')"
-                        required
-                        autofocus
+                    <x-text-input id="email" name="email" type="email" :value="old('email')" required autofocus
                         placeholder="you@example.com" />
                     <x-input-error :messages="$errors->get('email')" />
                 </div>
 
                 <div>
                     <x-input-label for="password" value='Password' />
-                    <x-text-input
-                        id="password"
-                        type="password"
-                        name="password"
-                        required
-                        placeholder="••••••••" />
+                    <x-text-input id="password" type="password" name="password" required placeholder="••••••••" />
                     <x-input-error :messages="$errors->get('password')" />
                 </div>
 

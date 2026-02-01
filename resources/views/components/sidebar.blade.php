@@ -2,7 +2,7 @@
 
     {{-- Logo --}}
     <div class="flex items-center gap-3 mb-10 px-6">
-        <img src="{{ asset('images/logoActra.png') }}" class="h-23 w-32" alt="Taskly">
+        <img src="{{ asset('images/logoActra.png') }}" class="h-23 w-32" alt="Actra">
     </div>
 
     {{-- Navigation --}}
